@@ -27,7 +27,11 @@ const Movie = () => {
 
     const align = (e) => {
         const { value } = e.target;
-        setData([...data].sort((a, b) => (a[value] > b[value] ? 1 : -1)));
+        setData(
+            [...data].sort((a, b) => {
+                return a[value] > b[value] ? 1 : -1;
+            })
+        );
     };
 
     const onSubmit = (e) => {
@@ -72,7 +76,7 @@ const Movie = () => {
     return (
         <div className="inner">
             <h2>영화관리 리스트</h2>
-            <MovieInput mov={mov} changeInput={changeInput} onSubmit={onSubmit} genRef={genRef} isEdit={isEdit} />
+            <MovieInput mov={mov} changeInput={changeInput} onSubmit={onSubmit} genRef={genRef} />
             <MovieList data={data} onDel={onDel} onEdit={onEdit} align={align} />
         </div>
     );
